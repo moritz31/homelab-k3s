@@ -1,0 +1,11 @@
+releases:
+- name: metallb
+  namespace: metallb
+  chart: stable/metallb
+  values:
+    - configInline:
+        address-pools:
+        - name: default
+          protocol: layer2
+          addresses:
+          - 192.168.178.225/27

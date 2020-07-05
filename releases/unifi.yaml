@@ -1,0 +1,29 @@
+releases:
+- name: unifi
+  namespace: unifi
+  chart: private/unifi
+  values:
+    - image:
+        tag: 5.12.72-ls61
+      persistentVolumeClaim:
+          enabled: true
+          storageClass: openebs-jiva-default
+      serviceTCP:
+          type: LoadBalancer
+          loadBalancerIP: 192.168.178.253
+          annotations:
+            metallb.universe.tf/allow-shared-ip: unifi-svc
+      serviceUDP:
+          type: LoadBalancer
+          loadBalancerIP: 192.168.178.253
+          annotations:
+            metallb.universe.tf/allow-shared-ip: unifi-svc
+      ingress:
+        enabled: true
+        hosts:
+          - unifi.kirstein.me
+        tls:
+          - secretName: kirstein-me-tls
+            hosts:
+              - unifi.kirstein.me
+      

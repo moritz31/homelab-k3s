@@ -1,0 +1,27 @@
+releases:
+- name: pihole
+  namespace: pihole
+  chart: mojo2600/pihole
+  values:
+    - adminPassword: {{ .Environment.Values.piholePassword }}
+      DNS1: "1.1.1.1"
+      DNS2: "8.8.8.8"
+      replicaCount: 1
+      persistentVolumeClaim:
+          enabled: true
+          storageClass: openebs-hostpath
+      extraEnvVars:
+          CONDITIONAL_FORWARDING: 'True'
+          CONDITIONAL_FORWARDING_IP: "192.168.178.1"
+          CONDITIONAL_FORWARDING_DOMAIN: "fritz.box"
+          CONDITIONAL_FORWARDING_REVERSE: "178.168.192.in-addr.arpa"
+      serviceTCP:
+          type: LoadBalancer
+          loadBalancerIP: 192.168.178.254
+          annotations:
+            metallb.universe.tf/allow-shared-ip: pihole-svc
+      serviceUDP:
+          type: LoadBalancer
+          loadBalancerIP: 192.168.178.254
+          annotations:
+            metallb.universe.tf/allow-shared-ip: pihole-svc

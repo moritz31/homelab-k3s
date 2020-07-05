@@ -1,0 +1,9 @@
+repositories:
+  - name: jetstack.io
+    url: https://charts.jetstack.io
+  - name: jellyfin
+    url: https://billimek.com/billimek-charts/
+  - name: mojo2600
+    url: https://mojo2600.github.io/pihole-kubernetes/
+  - name: private
+    url: https://moritz31.github.io/helm/
