@@ -1,10 +1,7 @@
-bases:
-  - commons/repos.yaml
-
 helmfiles:
   - path: releases/*
     values:
-      - env/{{ .Environment.Name }}.yaml
+      - commons/env/{{ .Environment.Name }}.yaml
 
 helmDefaults:
   verify: true

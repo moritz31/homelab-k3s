@@ -1,3 +1,7 @@
+repositories:
+  - name: private
+    url: https://moritz31.github.io/helm/
+
 releases:
 - name: unifi
   namespace: unifi

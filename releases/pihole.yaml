@@ -1,3 +1,7 @@
+
+repositories:
+  - name: mojo2600
+    url: https://mojo2600.github.io/pihole-kubernetes/
 releases:
 - name: pihole
   namespace: pihole
@@ -9,7 +13,7 @@ releases:
       replicaCount: 1
       persistentVolumeClaim:
           enabled: true
-          storageClass: openebs-hostpath
+          storageClass: openebs-jiva-default
       extraEnvVars:
           CONDITIONAL_FORWARDING: 'True'
           CONDITIONAL_FORWARDING_IP: "192.168.178.1"
